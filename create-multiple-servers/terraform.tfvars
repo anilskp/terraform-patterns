@@ -1,0 +1,10 @@
+vnetname = "qrspoke1-vnet"
+subnetname = "Apps"
+vnetresourcegroupname = "qrspoke1-rg"
+newresourcegroupname = "appsserver-rg"
+newservername = "provisionserver"
+servercount = 2
+location = "westeurope"
+Owner = "QRIT"
+CC = "625"
+Environment = "Production"
