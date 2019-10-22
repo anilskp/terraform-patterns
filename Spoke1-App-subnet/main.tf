@@ -16,7 +16,7 @@ resource "azurerm_subnet" "sub" {
   name                      = "${var.Subnetname}"
   resource_group_name       = "${var.resourcegroupname}"
   virtual_network_name      = "${var.vnetname}"
-  address_prefix            = "11.0.2.0/24"
+  address_prefix            = "10.4.16.0/21"
   
   #network_security_group_id = "${azurerm_network_security_group.spoke.id}"
 }
