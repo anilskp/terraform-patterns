@@ -39,6 +39,18 @@ resource "azurerm_network_security_group" "sub" {
     destination_address_prefix = "*"
   }
 
+
+security_rule {
+    name                       = "DenyVnetInbound"
+    priority                   = "4096"
+    direction                  = "Inbound"
+    access                     = "Deny"
+    protocol                   = "*"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "VirtualNetwork"
+    destination_address_prefix = "VirtualNetwork"
+  }
 }
 
 resource "azurerm_subnet_network_security_group_association" "sub" {
