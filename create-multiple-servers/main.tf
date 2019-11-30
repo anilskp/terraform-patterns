@@ -28,7 +28,7 @@ resource "azurerm_managed_disk" "copy" {
   resource_group_name = "${azurerm_resource_group.cps.name}"
   storage_account_type = "Standard_LRS"
   create_option = "Copy"
-  source_resource_id = "/subscriptions/6513336d-7a7a-4542-9870-96badcfd3794/resourceGroups/qrazaniltest/providers/Microsoft.Compute/snapshots/azure-provision-server-disk01"
+  source_resource_id = "/subscriptions/6513336d-7a7a-4542-9870-96badcfd3794/resourceGroups/qrazaniltest/providers/Microsoft.Compute/snapshots/qradmin-jumpserverimage-disk"
   disk_size_gb = "127"
 
 tags = {
@@ -59,7 +59,7 @@ resource "azurerm_virtual_machine" "cps" {
   location              = "${azurerm_resource_group.cps.location}"
   resource_group_name   = "${azurerm_resource_group.cps.name}"
   network_interface_ids = ["${element(azurerm_network_interface.cps.*.id, count.index)}"]
-  vm_size               = "Standard_DS1_v2"
+  vm_size               = "Standard_D2_v3"
 
 
 

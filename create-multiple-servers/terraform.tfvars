@@ -1,8 +1,8 @@
-vnetname = "qrspoke1-vnet"
-subnetname = "Apps"
-vnetresourcegroupname = "qrspoke1-rg"
-newresourcegroupname = "appsserver-rg"
-newservername = "provisionserver"
+vnetname = "qrhub1-vnet"
+subnetname = "Management"
+vnetresourcegroupname = "qrhub1-rg"
+newresourcegroupname = "qr-jumpserver-rg"
+newservername = "adminjumpserver"
 servercount = 2
 location = "westeurope"
 Owner = "QRIT"
