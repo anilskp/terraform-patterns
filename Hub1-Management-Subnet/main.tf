@@ -28,7 +28,7 @@ resource "azurerm_network_security_group" "sub" {
   tags = "${merge( local.common_tags)}"
 
   security_rule {
-    name                       = "UDP"
+    name                       = "RDP"
     priority                   = 110
     direction                  = "Inbound"
     access                     = "Allow"
@@ -38,7 +38,17 @@ resource "azurerm_network_security_group" "sub" {
     source_address_prefix      = "10.189.3.0/24"
     destination_address_prefix = "*"
   }
-
+  security_rule {
+    name                       = "BastionRDP"
+    priority                   = 120
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "TCP"
+    source_port_range          = "*"
+    destination_port_range     = "3389"
+    source_address_prefix      = "10.3.2.0/24"
+    destination_address_prefix = "10.3.0.0/24"
+  }
 
 security_rule {
     name                       = "DenyVnetInbound"
