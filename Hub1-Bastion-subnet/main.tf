@@ -111,3 +111,26 @@ resource "azurerm_subnet_network_security_group_association" "sub" {
   network_security_group_id = "${azurerm_network_security_group.sub.id}"
 }
  
+resource "azurerm_resource_group" "bas" {
+  name     = "qr-hubbastion-rg"
+  location = "${var.location}"
+}
+resource "azurerm_public_ip" "bas" {
+  name                = "hub-bastion-ip"
+  location            = "${azurerm_resource_group.bas.location}"
+  resource_group_name = "${azurerm_resource_group.bas.name}"
+  allocation_method   = "Static"
+  sku                 = "Standard"
+}
+
+resource "azurerm_bastion_host" "bas" {
+  name                = "hub-bastion"
+  location            = "${azurerm_resource_group.bas.location}"
+  resource_group_name = "${azurerm_resource_group.bas.name}"
+
+  ip_configuration {
+    name                 = "configuration"
+    subnet_id            = "${azurerm_subnet.sub.id}"
+    public_ip_address_id = "${azurerm_public_ip.bas.id}"
+  }
+} 
